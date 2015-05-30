@@ -18,13 +18,7 @@ config.output = {
   css: 'style.[hash].min.css',
   chunkFilename: '[id].js'
 };
-config.postcss = [
-  // Optimizations
-  require('postcss-import'),
-  require('csswring'),
-  require('postcss-discard-duplicates')(),
-  require('postcss-calc')()
-].concat(config.postcss);
+
 config.plugins = config.plugins.concat([
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({
@@ -42,13 +36,6 @@ config.plugins = config.plugins.concat([
       join_vars: true,
       drop_console: true
     }
-  }),
-  new CompressionPlugin({
-    asset: '{file}.gz',
-    algorithm: 'gzip',
-    regExp: /\.js$|\.html$/,
-    threshold: 10240,
-    minRatio: 0.8
   })
 ]);
 

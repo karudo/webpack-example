@@ -7,7 +7,8 @@ var config = production ? require('./webpack.prod.config.js') : require('./webpa
 
 config.module.loaders = config.module.loaders.concat([
   {test: /\.jsx?$/, loader: 'babel?optional=runtime', exclude: /node_modules/},
-  {test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1!postcss')}
+  {test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1')},
+  {test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1!less?sourceMap')}
 ]);
 
 config.plugins = config.plugins.concat(
@@ -26,6 +27,7 @@ config.plugins = config.plugins.concat(
             );
 
             if (production) {
+              //console.log(stats.toJson().assets)
               data = config.revFiles(data, stats.toJson().assets);
             }
 

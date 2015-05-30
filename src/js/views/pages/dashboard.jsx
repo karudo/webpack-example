@@ -8,7 +8,8 @@ class UserDashboard extends React.Component {
     return (
         <section>
           <h2>User Dashboard</h2>
-          <p>blab balhlahlhblahlbh</p>
+          <p>blab balhlahlhblahlbh!!!</p>
+          <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
         </section>
     );
   }
