@@ -2,6 +2,7 @@
 
 var webpack = require('webpack');
 
+var urlLoaderLimitName = '&limit=30000&name=[name].[ext]';
 
 module.exports = {
   target: 'web',
@@ -18,13 +19,13 @@ module.exports = {
       {test: /\.jsx?$/, loader: 'eslint-loader', exclude: /node_modules/}
     ],
     loaders: [
-      {test: /\.png$/, loader: 'url?mimetype=image/png'},
-      {test: /\.gif$/, loader: 'url?mimetype=image/gif'},
-      {test: /\.jpe?g$/, loader: 'url?mimetype=image/jpeg'},
-      {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=30000&minetype=application/font-woff'},
-      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=30000&minetype=application/octet-stream"},
-      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=30000&minetype=image/svg+xml"},
-      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'}
+      {test: /\.png$/, loader: 'url?mimetype=image/png'+urlLoaderLimitName},
+      {test: /\.gif$/, loader: 'url?mimetype=image/gif'+urlLoaderLimitName},
+      {test: /\.jpe?g$/, loader: 'url?mimetype=image/jpeg'+urlLoaderLimitName},
+      {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?mimetype=application/font-woff'+urlLoaderLimitName},
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?mimetype=application/octet-stream"+urlLoaderLimitName},
+      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?mimetype=image/svg+xml"+urlLoaderLimitName},
+      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file?name=[name].[ext]'}
     ],
     noParse: /\.min\.js/
   },
